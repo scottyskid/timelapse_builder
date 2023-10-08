@@ -1,0 +1,6 @@
+
+/media/*
+/.venv
+
+# Git Keep
+!/**/.gitkeep
