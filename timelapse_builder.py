@@ -7,7 +7,7 @@ if __name__ == "__main__":
 
     print(CONFIG)
 
-    vid = cv.VideoCapture(str(CONFIG.input_folder / 'original.mp4'))
+    vid = cv.VideoCapture(str(CONFIG.input_folder / "original.mp4"))
     frames = []
     success = 1
     count = 0
@@ -15,11 +15,16 @@ if __name__ == "__main__":
     while success:
         success, image = vid.read()
         if count % CONFIG.frame_jump == 0:
+            if image is not None:
+                image = image[
+                    CONFIG.cropped_y : CONFIG.cropped_y + CONFIG.cropped_height,
+                    CONFIG.cropped_x : CONFIG.cropped_x + CONFIG.cropped_width,
+                ]
             frames.append(image)
         count += 1
 
     writer = cv.VideoWriter(
-        str(CONFIG.output_folder / 'tl.mp4'),
+        str(CONFIG.output_folder / "tl.mp4"),
         cv.VideoWriter_fourcc(*"MP4V"),
         CONFIG.output_fps,
         CONFIG.output_frame_size,

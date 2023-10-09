@@ -9,5 +9,9 @@ class Config:
     input_folder: Path = root_folder / "media"
     output_folder: Path = root_folder / "output"
     frame_jump: int = 8
-    output_fps: float = 29.98
-    output_frame_size: tuple[int, int] = (1280, 720)
+    output_fps: float = 10 # default 29.98
+    cropped_x: int = 20 # in pixels
+    cropped_width: int = 990 # in pixels
+    cropped_y: int = 20 # in pixels
+    cropped_height: int = 550 # in pixels
+    output_frame_size: tuple[int, int] = (cropped_width, cropped_height)
